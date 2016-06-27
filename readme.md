@@ -19,7 +19,7 @@ To deploy as part of an ARM template, include a site extension resource in your 
       "resources": [
         {
           "apiVersion": "2015-08-01",
-          "name": "python351x64",
+          "name": "python352x64",
           "type": "siteextensions",
           "properties": { },
           "dependsOn": [
@@ -119,8 +119,8 @@ To build one extension, use `build.cmd [source exe] [target name] [package name]
 For example:
 
 ```
-build.bat "py -3.5" Python35 351x64
-build.bat C:\Python27\python.exe Python27 2711x86
+build.bat "py -3.5" Python35 352x64
+build.bat C:\Python27\python.exe Python27 2712x86
 ```
 
 Note that the referenced install of Python must match the intended target version. No validation is performed to ensure this.
