@@ -9,9 +9,8 @@
         idleTimeout="21600"
         instanceMaxRequests="10000000"
         signalBeforeTerminateSeconds="60"
-        xdt:Transform="Insert">
+        xdt:Transform="InsertIfMissing">
         <environmentVariables>
-          <environmentVariable name="SSL_CERT_FILE" value="D:\home\Python35\cacert.pem" />
           <environmentVariable name="PYTHONHOME" value="D:\home\Python35" />
         </environmentVariables>
       </application>

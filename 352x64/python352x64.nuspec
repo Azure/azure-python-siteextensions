@@ -3,12 +3,12 @@
   <metadata>
     <id>python352x64</id>
     <title>Python 3.5.2 x64</title>
-    <version>3.5.2.0</version>
+    <version>3.5.2.2</version>
     <authors>Microsoft</authors>
     <licenseUrl>https://docs.python.org/3.5/license.html</licenseUrl>
     <projectUrl>http://www.python.org/</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>Installs Python 3.5.2 x64 into Azure App Service at D:\home\Python35\python.exe. See the project site for usage information.</description>
+    <description>Installs Python 3.5.2 x64 into Azure App Service at D:\home\Python35\python.exe. See https://github.com/azure/azure-python-siteextensions for usage information.</description>
     <iconUrl>http://ptvs.azureedge.net/docs/Python_48.png</iconUrl>
     <tags>python</tags>
   </metadata>

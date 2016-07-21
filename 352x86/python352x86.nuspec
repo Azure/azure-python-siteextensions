@@ -1,14 +1,14 @@
 <?xml version="1.0"?>
 <package >
   <metadata>
-    <id>python351x64</id>
-    <title>Python 3.5.1 x64</title>
-    <version>3.5.1.8</version>
+    <id>python352x86</id>
+    <title>Python 3.5.2 x86</title>
+    <version>3.5.2.1</version>
     <authors>Microsoft</authors>
     <licenseUrl>https://docs.python.org/3.5/license.html</licenseUrl>
     <projectUrl>http://www.python.org/</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>Installs Python 3.5.1 x64 into Azure App Service at D:\home\Python35\python.exe. See the project site for usage information.</description>
+    <description>Installs Python 3.5.2 x86 into Azure App Service at D:\home\Python35\python.exe. See https://github.com/azure/azure-python-siteextensions for usage information.</description>
     <iconUrl>http://ptvs.azureedge.net/docs/Python_48.png</iconUrl>
     <tags>python</tags>
   </metadata>
@@ -16,6 +16,5 @@
     <file src="content\**\*" target="content" />
     <file src="..\Common\*" target="content\Python35" />
     <file src="content\Python35\Lib\site-packages\wfastcgi.py" target="content\Python35" />
-    <file src="ssl.py" target="content\Python35\Lib\ssl.py" />
   </files>
 </package>
