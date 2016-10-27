@@ -78,13 +78,38 @@ if sys.version_info[0] == 2:
 
 LIB_ROOT = os.path.join(sys.prefix, 'Lib')
 
+if sys.version_info.releaselevel == 'final':
+    CURRENT_RELEASETAG = ''
+elif sys.version_info.releaselevel == 'rc':
+    CURRENT_RELEASETAG = 'rc%s' % sys.version_info.serial
+elif sys.version_info.releaselevel == 'beta':
+    CURRENT_RELEASETAG = 'b%s' % sys.version_info.serial
+
+CURRENT_VERSION = '%s%s%s%s%s' % (
+    sys.version_info[0],
+    sys.version_info[1],
+    sys.version_info[2],
+    CURRENT_RELEASETAG,
+    'x64' if sys.maxsize > 2**32 else 'x86'
+)
+
 if __name__ == '__main__':
     exit_code = 0
     
     try:
-        TARGET = sys.argv[1]
+        VERSION = sys.argv[1]
     except:
-        print('Expected target directory as argument', file=sys.stderr)
+        print('Expected version as first argument', file=sys.stderr)
+        sys.exit(1)
+    
+    if VERSION != CURRENT_VERSION:
+        print('Current version is', CURRENT_VERSION, file=sys.stderr)
+        sys.exit(2)
+    
+    try:
+        TARGET = sys.argv[2]
+    except:
+        print('Expected target directory as second argument', file=sys.stderr)
         sys.exit(1)
     
     print("Copying Python install from", sys.prefix)

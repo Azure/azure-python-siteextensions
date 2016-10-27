@@ -4,7 +4,7 @@
 @set D=%~dp0
 @rmdir /q /s "%D%\%3\content\%2" 2> nul
 %~1 -m pip install -U pip setuptools certifi wfastcgi
-%~1 "%D%Tools\copy_py.py" "%D%\%3\content\%2\\"
+%~1 "%D%Tools\copy_py.py" %3 "%D%\%3\content\%2\\"
 @if errorlevel 1 exit /B
 @if not exist "%D%packages" mkdir "%D%packages"
 "%D%Tools\nuget.exe" pack -NoPackageAnalysis "%D%%3\python%3.nuspec" -OutputDirectory "%D%packages"
