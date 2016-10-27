@@ -16,6 +16,12 @@ def is_in(value, patterns):
             if search(value):
                 return True
 
+SYSTEM_FILES = {
+    (2, 7): ['python27.dll'],
+    (3, 5): ['python35.dll', 'vcruntime140.dll'],
+    (3, 6): ['python36.dll', 'vcruntime140.dll'],
+}[sys.version_info[:2]]
+
 REQUIRED_PACKAGES = [
     'certifi',
     re.compile(r'certifi-.+\.dist-info', re.I),
@@ -73,10 +79,12 @@ if sys.version_info[0] == 2:
 LIB_ROOT = os.path.join(sys.prefix, 'Lib')
 
 if __name__ == '__main__':
+    exit_code = 0
+    
     try:
         TARGET = sys.argv[1]
     except:
-        print('Expected target directory as argument')
+        print('Expected target directory as argument', file=sys.stderr)
         sys.exit(1)
     
     print("Copying Python install from", sys.prefix)
@@ -119,4 +127,18 @@ if __name__ == '__main__':
             with open(filename, 'rb') as f1:
                 with open(target, 'wb') as f2:
                     f2.write(f1.read())
-
+    
+    for name in SYSTEM_FILES:
+        target = os.path.join(TARGET, name)
+        system_source = os.path.join(os.getenv('SYSTEMROOT'), 'System32', name)
+        if not os.path.isfile(target):
+            if os.path.isfile(system_source):
+                print('Copying', name, 'from', system_source)
+                with open(system_source, 'rb') as f1:
+                    with open(target, 'wb') as f2:
+                        f2.write(f1.read())
+            else:
+                print('Unable to locate', name, file=sys.stderr)
+                exit_code = 1
+    
+    sys.exit(exit_code)
