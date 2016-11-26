@@ -4,7 +4,7 @@ This repository contains the build scripts for the [Python site extensions](http
 
 # Installing and Using
 
-To install a Site Extension into an Azure App service instance, you can use the portal at [portal.azure.com](https://portal.azure.com) under the Tools blade of your app.
+To install a Site Extension into an Azure App service instance, you can use the portal at [portal.azure.com](https://portal.azure.com). Go to the Web App and search for Extensions.
 
 To deploy as part of an ARM template, include a site extension resource in your site. For example, the below resource will install Python 3.5.1 x64 as part of deploying your site.
 
