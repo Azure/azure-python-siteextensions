@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>python360x64</id>
+    <title>Python 3.6.0 x64</title>
+    <version>3.6.0.0</version>
+    <authors>Microsoft</authors>
+    <licenseUrl>https://docs.python.org/3.6/license.html</licenseUrl>
+    <projectUrl>http://www.python.org/</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Installs Python 3.6.0 x64 into Azure App Service at D:\home\Python36\python.exe. See https://github.com/azure/azure-python-siteextensions for usage information.</description>
+    <iconUrl>http://ptvs.azureedge.net/docs/Python_48.png</iconUrl>
+    <tags>python</tags>
+  </metadata>
+  <files>
+    <file src="content\**\*" target="content" />
+    <file src="..\Common\*" target="content\Python36" />
+    <file src="content\Python36\Lib\site-packages\wfastcgi.py" target="content\Python36" />
+  </files>
+</package>

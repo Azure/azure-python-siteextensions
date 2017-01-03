@@ -43,6 +43,7 @@ EXCLUDED_FILES = [
     re.compile(r'tk.+\.dll$', re.I),
     re.compile(r'\\_test.+\.pyd$', re.I),
     re.compile(r'_test\.pyd$', re.I),
+    re.compile(r'.+_d\.(pyd|dll|exe)$', re.I),
 ]
 
 DO_NOT_COMPILE_FILES = [
@@ -78,18 +79,10 @@ if sys.version_info[0] == 2:
 
 LIB_ROOT = os.path.join(sys.prefix, 'Lib')
 
-if sys.version_info.releaselevel == 'final':
-    CURRENT_RELEASETAG = ''
-elif sys.version_info.releaselevel == 'rc':
-    CURRENT_RELEASETAG = 'rc%s' % sys.version_info.serial
-elif sys.version_info.releaselevel == 'beta':
-    CURRENT_RELEASETAG = 'b%s' % sys.version_info.serial
-
-CURRENT_VERSION = '%s%s%s%s%s' % (
+CURRENT_VERSION = '%s%s%s%s' % (
     sys.version_info[0],
     sys.version_info[1],
     sys.version_info[2],
-    CURRENT_RELEASETAG,
     'x64' if sys.maxsize > 2**32 else 'x86'
 )
 
