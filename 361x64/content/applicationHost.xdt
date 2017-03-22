@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<configuration xmlns:xdt="http://schemas.microsoft.com/XML-Document-Transform">
+  <system.webServer>
+    <fastCgi>
+      <application
+        fullPath="D:\home\Python36\python.exe"
+        arguments="D:\home\Python36\wfastcgi.py"
+        maxInstances="16"
+        idleTimeout="21600"
+        instanceMaxRequests="10000000"
+        signalBeforeTerminateSeconds="60"
+        xdt:Transform="InsertIfMissing">
+        <environmentVariables>
+          <environmentVariable name="PYTHONHOME" value="D:\home\Python36" />
+        </environmentVariables>
+      </application>
+    </fastCgi>
+  </system.webServer>
+</configuration>
