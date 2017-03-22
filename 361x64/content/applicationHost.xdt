@@ -3,15 +3,16 @@
   <system.webServer>
     <fastCgi>
       <application
-        fullPath="D:\home\Python36\python.exe"
-        arguments="D:\home\Python36\wfastcgi.py"
+        fullPath="D:\home\python361x64\python.exe"
+        arguments="D:\home\python361x64\wfastcgi.py"
         maxInstances="16"
         idleTimeout="21600"
         instanceMaxRequests="10000000"
         signalBeforeTerminateSeconds="60"
-        xdt:Transform="InsertIfMissing">
+        xdt:Transform="InsertIfMissing"
+        xdt:Locator="Match(fullPath)">
         <environmentVariables>
-          <environmentVariable name="PYTHONHOME" value="D:\home\Python36" />
+          <environmentVariable name="PYTHONHOME" value="D:\home\python361x64" />
         </environmentVariables>
       </application>
     </fastCgi>

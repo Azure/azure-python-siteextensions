@@ -9,7 +9,8 @@
         idleTimeout="21600"
         instanceMaxRequests="10000000"
         signalBeforeTerminateSeconds="60"
-        xdt:Transform="InsertIfMissing">
+        xdt:Transform="InsertIfMissing"
+        xdt:Locator="Match(fullPath)">
         <environmentVariables>
           <environmentVariable name="PYTHONHOME" value="D:\home\Python27" />
         </environmentVariables>
