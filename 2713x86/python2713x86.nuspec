@@ -13,8 +13,9 @@
     <tags>python</tags>
   </metadata>
   <files>
-    <file src="content\**\*" target="content" />
+    <file src="content\*" target="content" />
+    <file src="content\python2713x86\*" target="content\Python27" />
     <file src="..\Common\*" target="content\Python27" />
-    <file src="content\Python27\Lib\site-packages\wfastcgi.py" target="content\Python27" />
+    <file src="content\python2713x86\Lib\site-packages\wfastcgi.py" target="content\Python27" />
   </files>
 </package>

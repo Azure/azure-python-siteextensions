@@ -3,7 +3,7 @@
   <metadata>
     <id>python352x64</id>
     <title>Python 3.5.2 x64</title>
-    <version>3.5.2.3</version>
+    <version>3.5.2.4</version>
     <authors>Microsoft</authors>
     <licenseUrl>https://docs.python.org/3.5/license.html</licenseUrl>
     <projectUrl>http://www.python.org/</projectUrl>
@@ -13,8 +13,9 @@
     <tags>python</tags>
   </metadata>
   <files>
-    <file src="content\**\*" target="content" />
+    <file src="content\*" target="content" />
+    <file src="content\python352x64\**\*" target="content\Python35" />
     <file src="..\Common\*" target="content\Python35" />
-    <file src="content\Python35\Lib\site-packages\wfastcgi.py" target="content\Python35" />
+    <file src="content\python352x64\Lib\site-packages\wfastcgi.py" target="content\Python35" />
   </files>
 </package>
