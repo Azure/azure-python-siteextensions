@@ -3,7 +3,7 @@
   <metadata>
     <id>python2713x86</id>
     <title>Python 2.7.13 x86</title>
-    <version>2.7.13.1</version>
+    <version>2.7.13.2</version>
     <authors>Microsoft</authors>
     <licenseUrl>https://docs.python.org/2.7/license.html</licenseUrl>
     <projectUrl>http://www.python.org/</projectUrl>
@@ -14,7 +14,7 @@
   </metadata>
   <files>
     <file src="content\*" target="content" />
-    <file src="content\python2713x86\*" target="content\Python27" />
+    <file src="content\python2713x86\**\*" target="content\Python27" />
     <file src="..\Common\*" target="content\Python27" />
     <file src="content\python2713x86\Lib\site-packages\wfastcgi.py" target="content\Python27" />
   </files>

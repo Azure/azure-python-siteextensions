@@ -8,8 +8,8 @@
 %NUGET% install %1 -Version %2 -OutputDirectory "%D%source_packages"
 @set PY="%D%source_packages\%~1.%~2\tools\python.exe"
 
-rem For older versions of Python, overwrite bdist_wininst to allow setuptools
-rem to execute its install_scripts command without crashing.
+@rem For older versions of Python, overwrite bdist_wininst to allow setuptools
+@rem to execute its install_scripts command without crashing.
 copy /Y "%D%Tools\distutils.command.bdist_wininst.py" "%D%source_packages\%~1.%~2\tools\Lib\distutils\command\bdist_wininst.py"
 
 @rmdir /q /s "%CONTENT%" 2> nul

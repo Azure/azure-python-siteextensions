@@ -23,11 +23,16 @@ SYSTEM_FILES = {
 }[sys.version_info[:2]]
 
 REQUIRED_PACKAGES = [
+    'appdirs.py',
+    re.compile(r'appdirs-.+\.dist-info', re.I),
     'certifi',
     re.compile(r'certifi-.+\.dist-info', re.I),
+    'packaging',
     'pip',
     re.compile(r'pip-.+\.dist-info', re.I),
     'pkg_resources',
+    'six.py',
+    re.compile(r'six-.+\.dist-info', re.I),
     'setuptools',
     re.compile(r'setuptools-.+\.dist-info', re.I),
     'wfastcgi.py',
