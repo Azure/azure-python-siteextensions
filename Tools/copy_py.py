@@ -22,22 +22,6 @@ SYSTEM_FILES = {
     (3, 6): ['python36.dll', 'vcruntime140.dll'],
 }[sys.version_info[:2]]
 
-REQUIRED_PACKAGES = [
-    'appdirs.py',
-    re.compile(r'appdirs-.+\.dist-info', re.I),
-    'certifi',
-    re.compile(r'certifi-.+\.dist-info', re.I),
-    'packaging',
-    'pip',
-    re.compile(r'pip-.+\.dist-info', re.I),
-    'pkg_resources',
-    'six.py',
-    re.compile(r'six-.+\.dist-info', re.I),
-    'setuptools',
-    re.compile(r'setuptools-.+\.dist-info', re.I),
-    'wfastcgi.py',
-]
-
 EXCLUDED_STDLIB = [
     'test',
     re.compile('plat-.+', re.I),
@@ -63,20 +47,15 @@ EXCLUDED_SUFFIX = [
 ]
 
 if sys.version_info[0] == 3:
-    REQUIRED_PACKAGES.extend([
-        '_markerlib',
-    ])
     EXCLUDED_STDLIB.extend([
         'ensurepip',
         'idlelib',
         'tkinter',
         'turtledemo',
+        'venv',
     ])
 
 if sys.version_info[0] == 2:
-    REQUIRED_PACKAGES.extend([
-        'virtualenv-support',
-    ])
     EXCLUDED_STDLIB.extend([
         'lib-tk',
         'pydoc_data',
@@ -120,10 +99,6 @@ if __name__ == '__main__':
         package_name = os.path.split(basedir)[-1].lower()
         if package_name in ('__pycache__',):
             continue
-        
-        if package_name == 'site-packages':
-            subdirs[:] = [d for d in subdirs if is_in(d, REQUIRED_PACKAGES)]
-            files[:] = [f for f in files if is_in(f, REQUIRED_PACKAGES)]
         
         for name in files:
             filename = os.path.join(basedir, name)
