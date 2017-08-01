@@ -1,11 +1,13 @@
 @setlocal
 @set D=%~dp0
 
+@call "%D%\build.bat" python     3.6.2 362x64
 @call "%D%\build.bat" python     3.6.1 361x64
 @call "%D%\build.bat" python     3.6.0 360x64
 @call "%D%\build.bat" python     3.5.3 353x64
 @call "%D%\build.bat" python     3.5.2 352x64
 
+@call "%D%\build.bat" pythonx86  3.6.2 362x86
 @call "%D%\build.bat" pythonx86  3.6.1 361x86
 @call "%D%\build.bat" pythonx86  3.6.0 360x86
 @call "%D%\build.bat" pythonx86  3.5.3 353x86
