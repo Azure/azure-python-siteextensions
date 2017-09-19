@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>python2714x86</id>
+    <title>Python 2.7.14 x86</title>
+    <version>2.7.14.0</version>
+    <authors>Microsoft</authors>
+    <licenseUrl>https://docs.python.org/2.7/license.html</licenseUrl>
+    <projectUrl>http://www.python.org/</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Installs Python 2.7.14 x86 into Azure App Service at D:\home\Python27\python.exe. See https://github.com/azure/azure-python-siteextensions for usage information.</description>
+    <iconUrl>http://ptvs.azureedge.net/docs/Python_48.png</iconUrl>
+    <tags>python</tags>
+  </metadata>
+  <files>
+    <file src="content\*" target="content" />
+    <file src="content\python2714x86\**\*" target="content\Python27" />
+    <file src="..\Common\*" target="content\Python27" />
+    <file src="content\python2714x86\Lib\site-packages\wfastcgi.py" target="content\Python27" />
+  </files>
+</package>

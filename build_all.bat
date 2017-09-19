@@ -15,7 +15,9 @@
 @call "%D%\build.bat" pythonx86  3.5.3 353x86
 @call "%D%\build.bat" pythonx86  3.5.2 352x86
 
+@call "%D%\build.bat" python2    2.7.14 2714x64
 @call "%D%\build.bat" python2    2.7.13 2713x64
 @call "%D%\build.bat" python2    2.7.12 2712x64
+@call "%D%\build.bat" python2x86 2.7.14 2714x86
 @call "%D%\build.bat" python2x86 2.7.13 2713x86
 @call "%D%\build.bat" python2x86 2.7.12 2712x86
