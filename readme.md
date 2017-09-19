@@ -6,7 +6,7 @@ This repository contains the build scripts for the [Python site extensions](http
 
 To install a Site Extension into an Azure App service instance, you can use the portal at [portal.azure.com](https://portal.azure.com). Go to the Web App and search for Extensions.
 
-To deploy as part of an ARM template, include a site extension resource in your site. For example, the below resource will install Python 3.5.1 x64 as part of deploying your site.
+To deploy as part of an ARM template, include a site extension resource in your site. For example, the below resource will install Python 3.6.2 x64 as part of deploying your site.
 
 ```json
 {
@@ -19,7 +19,7 @@ To deploy as part of an ARM template, include a site extension resource in your 
       "resources": [
         {
           "apiVersion": "2015-08-01",
-          "name": "python352x64",
+          "name": "python362x64",
           "type": "siteextensions",
           "properties": { },
           "dependsOn": [
@@ -47,7 +47,7 @@ Your `web.config` configuration should include the following:
   </appSettings>
   <system.webServer>
     <handlers>
-      <add name="PythonHandler" path="*" verb="*" modules="FastCgiModule" scriptProcessor="D:\home\Python35\python.exe|D:\home\Python35\wfastcgi.py" resourceType="Unspecified" requireAccess="Script"/>
+      <add name="PythonHandler" path="*" verb="*" modules="FastCgiModule" scriptProcessor="D:\home\python362x64\python.exe|D:\home\python362x64\wfastcgi.py" resourceType="Unspecified" requireAccess="Script"/>
     </handlers>
   </system.webServer>
 </configuration>
@@ -68,7 +68,7 @@ The [HttpPlatform](http://www.iis.net/learn/extensions/httpplatformhandler/httpp
     <handlers>
       <add name="PythonHandler" path="*" verb="*" modules="httpPlatformHandler" resourceType="Unspecified"/>
     </handlers>
-    <httpPlatform processPath="D:\home\Python35\python.exe"
+    <httpPlatform processPath="D:\home\python362x64\python.exe"
                   arguments="D:\home\site\wwwroot\runserver.py --port %HTTP_PLATFORM_PORT%"
                   stdoutLogEnabled="true"
                   stdoutLogFile="D:\home\LogFiles\python.log"
@@ -114,16 +114,14 @@ This project has adopted the [Microsoft Open Source Code of Conduct](https://ope
 
 To build all extensions, run `build_all.cmd`.
 
-To build one extension, use `build.cmd [source exe] [target name] [package name]`, where `source exe` is a command to execute the version of Python to use, `target name` is the last directory segment where it will be installed in App Service, and `package name` is the name of the subdirectory with the `.nuspec` file and other content.
+To build one extension, use `build.cmd [source Nuget package] [version] [package name]`, where `source Nuget package` is the name of the official Nuget release to base the extension on, `version` is the version of , and `package name` is both the name of the subdirectory with the `.nuspec` file and other content and the suffix for the release.
 
 For example:
 
 ```
-build.bat "py -3.5" Python35 352x64
-build.bat C:\Python27\python.exe Python27 2712x86
+build.bat python 3.6.2 362x64
+build.bat python2 2.7.14 2714x86
 ```
-
-Note that the referenced install of Python must match the intended target version. No validation is performed to ensure this.
 
 # License
 Licensed as MIT - please see LICENSE for details.
