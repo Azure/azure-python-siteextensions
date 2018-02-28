@@ -18,7 +18,7 @@ copy /Y "%D%Tools\distutils.command.bdist_wininst.py" "%OUTDIR%\source_packages\
 %PY% "%D%Tools\copy_py.py" %3 "%CONTENT%\\"
 @if errorlevel 1 exit /B
 @if not exist "%OUTDIR%\packages" mkdir "%OUTDIR%\packages"
-%NUGET% pack -NoPackageAnalysis "%D%%3\python%~3.nuspec" -OutputDirectory "%OUTDIR%\packages"
+%NUGET% pack -NoPackageAnalysis "%D%%3\python%~3.nuspec" -OutputDirectory "%OUTDIR%\packages" -BasePath "%OUTDIR%\%3"
 @if not errorlevel 1 rmdir /q /s "%CONTENT%"
 @exit /B 0
 
