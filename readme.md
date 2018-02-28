@@ -6,7 +6,7 @@ This repository contains the build scripts for the [Python site extensions](http
 
 To install a Site Extension into an Azure App service instance, you can use the portal at [portal.azure.com](https://portal.azure.com). Go to the Web App and search for Extensions.
 
-To deploy as part of an ARM template, include a site extension resource in your site. For example, the below resource will install Python 3.6.2 x64 as part of deploying your site.
+To deploy as part of an ARM template, include a site extension resource in your site. For example, the below resource will install Python 3.6.4 x64 as part of deploying your site.
 
 ```json
 {
@@ -19,7 +19,7 @@ To deploy as part of an ARM template, include a site extension resource in your 
       "resources": [
         {
           "apiVersion": "2015-08-01",
-          "name": "python362x64",
+          "name": "azureappservice-python364x64",
           "type": "siteextensions",
           "properties": { },
           "dependsOn": [
@@ -47,7 +47,7 @@ Your `web.config` configuration should include the following:
   </appSettings>
   <system.webServer>
     <handlers>
-      <add name="PythonHandler" path="*" verb="*" modules="FastCgiModule" scriptProcessor="D:\home\python362x64\python.exe|D:\home\python362x64\wfastcgi.py" resourceType="Unspecified" requireAccess="Script"/>
+      <add name="PythonHandler" path="*" verb="*" modules="FastCgiModule" scriptProcessor="D:\home\python364x64\python.exe|D:\home\python364x64\wfastcgi.py" resourceType="Unspecified" requireAccess="Script"/>
     </handlers>
   </system.webServer>
 </configuration>
@@ -68,7 +68,7 @@ The [HttpPlatform](http://www.iis.net/learn/extensions/httpplatformhandler/httpp
     <handlers>
       <add name="PythonHandler" path="*" verb="*" modules="httpPlatformHandler" resourceType="Unspecified"/>
     </handlers>
-    <httpPlatform processPath="D:\home\python362x64\python.exe"
+    <httpPlatform processPath="D:\home\python364x64\python.exe"
                   arguments="D:\home\site\wwwroot\runserver.py --port %HTTP_PLATFORM_PORT%"
                   stdoutLogEnabled="true"
                   stdoutLogFile="D:\home\LogFiles\python.log"
@@ -119,7 +119,7 @@ To build one extension, use `build.cmd [source Nuget package] [version] [package
 For example:
 
 ```
-build.bat python 3.6.2 362x64
+build.bat python 3.6.4 362x64
 build.bat python2 2.7.14 2714x86
 ```
 

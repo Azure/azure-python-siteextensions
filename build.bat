@@ -19,7 +19,7 @@ copy /Y "%D%Tools\distutils.command.bdist_wininst.py" "%OUTDIR%\source_packages\
 @if errorlevel 1 exit /B
 @if not exist "%OUTDIR%\Common" mkdir "%OUTDIR%\Common" && copy /Y "%D%Common\*" "%OUTDIR%\Common"
 @if not exist "%OUTDIR%\packages" mkdir "%OUTDIR%\packages"
-%NUGET% pack -NoPackageAnalysis "%D%%3\python%~3.nuspec" -OutputDirectory "%OUTDIR%\packages" -BasePath "%OUTDIR%\%3"
+%NUGET% pack -NoPackageAnalysis "%D%%3\azureappservice-python%~3.nuspec" -OutputDirectory "%OUTDIR%\packages" -BasePath "%OUTDIR%\%3"
 @if not errorlevel 1 rmdir /q /s "%CONTENT%"
 @exit /B 0
 
@@ -31,6 +31,6 @@ copy /Y "%D%Tools\distutils.command.bdist_wininst.py" "%OUTDIR%\source_packages\
 @echo.
 @echo Examples:
 @echo.
-@echo     build.bat python 3.6.1 361x64
-@echo     build.bat python2x86 2.7.12 2712x86
+@echo     build.bat python 3.6.4 364x64
+@echo     build.bat python2x86 2.7.14 2714x86
 @echo.

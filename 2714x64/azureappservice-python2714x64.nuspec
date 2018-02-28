@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <package >
   <metadata>
-    <id>python2714x64</id>
+    <id>azureappservice-python2714x64</id>
     <title>Python 2.7.14 x64</title>
     <version>2.7.14.3</version>
     <authors>Microsoft</authors>

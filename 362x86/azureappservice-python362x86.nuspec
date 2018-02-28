@@ -1,20 +1,20 @@
 <?xml version="1.0"?>
 <package >
   <metadata>
-    <id>python362x64</id>
-    <title>Python 3.6.2 x64</title>
+    <id>azureappservice-python362x86</id>
+    <title>Python 3.6.2 x86</title>
     <version>3.6.2.3</version>
     <authors>Microsoft</authors>
     <licenseUrl>https://docs.python.org/3.6/license.html</licenseUrl>
     <projectUrl>http://www.python.org/</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>Installs Python 3.6.2 x64 into Azure App Service at D:\home\python362x64\python.exe. See https://github.com/azure/azure-python-siteextensions for usage information.</description>
+    <description>Installs Python 3.6.2 x86 into Azure App Service at D:\home\python362x86\python.exe. See https://github.com/azure/azure-python-siteextensions for usage information.</description>
     <iconUrl>http://ptvs.azureedge.net/docs/Python_48.png</iconUrl>
     <tags>python</tags>
   </metadata>
   <files>
     <file src="content\**\*" target="content" />
-    <file src="..\Common\*" target="content\python362x64" />
-    <file src="content\python362x64\Lib\site-packages\wfastcgi.py" target="content\python362x64" />
+    <file src="..\Common\*" target="content\python362x86" />
+    <file src="content\python362x86\Lib\site-packages\wfastcgi.py" target="content\python362x86" />
   </files>
 </package>
