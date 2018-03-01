@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<package >
+<package>
   <metadata>
     <id>azureappservice-python362x64</id>
     <title>Python 3.6.2 x64</title>
@@ -10,7 +10,10 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Installs Python 3.6.2 x64 into Azure App Service at D:\home\python362x64\python.exe. See https://github.com/azure/azure-python-siteextensions for usage information.</description>
     <iconUrl>http://ptvs.azureedge.net/docs/Python_48.png</iconUrl>
-    <tags>python</tags>
+    <tags>python AzureSiteExtension</tags>
+    <packageTypes>
+      <packageType name="AzureSiteExtension" />
+    </packageTypes>
   </metadata>
   <files>
     <file src="content\**\*" target="content" />
