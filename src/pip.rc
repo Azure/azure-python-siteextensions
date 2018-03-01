@@ -1,0 +1,45 @@
+// Include the manifest file that indicates we support all
+// current versions of Windows.
+#include <winuser.h>
+#include <winver.h>
+
+1 RT_MANIFEST "pip.manifest"
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION PIP_VERSION_NUMBER
+ PRODUCTVERSION PIP_VERSION_NUMBER
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS VS_FF_DEBUG
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS VOS__WINDOWS32
+ FILETYPE VFT_APP
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "000004b0"
+        BEGIN
+            VALUE "CompanyName", "Python Packaging Authority.\0"
+            VALUE "FileDescription", "pip\0"
+            VALUE "FileVersion", PIP_VERSION "\0"
+            VALUE "InternalName", "pip\0"
+            VALUE "LegalCopyright", "Copyright Python Packaging Authority\0"
+            VALUE "OriginalFilename", "pip.exe\0"
+            VALUE "ProductName", "pip\0"
+            VALUE "ProductVersion", PIP_VERSION "\0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x0, 1200
+    END
+END
