@@ -1,9 +1,10 @@
 #include <windows.h>
 
-typedef int (*Py_MainW)(int argc, const wchar_t **argv);
+typedef int (*Py_MainW)(int argc, wchar_t **argv);
 typedef int (*Py_MainA)(int argc, char **argv);
 
-int wc_to_mb(char** dest, const wchar_t *src) {
+int wc_to_mb(char** dest, const wchar_t *src)
+{
     BOOL usedDefault = FALSE;
     DWORD len = WideCharToMultiByte(CP_ACP, 0, src, -1, NULL, 0, NULL, &usedDefault);
     if (usedDefault) {
@@ -14,22 +15,44 @@ int wc_to_mb(char** dest, const wchar_t *src) {
     return WideCharToMultiByte(CP_ACP, 0, src, -1, *dest, len, NULL, NULL);
 }
 
-void free_argvA(int argc, char **argv) {
+void free_argvA(int argc, char **argv)
+{
     for (int i = 0; i < argc; ++i) {
         delete argv[i];
     }
     delete[] argv;
 }
 
-int
-wmain(int argc, wchar_t **argv)
+bool should_insert_pip(int argc, wchar_t **argv)
 {
-    const wchar_t **new_argv = new const wchar_t*[argc + 2];
-    new_argv[0] = argv[0];
-    new_argv[1] = L"-m";
-    new_argv[2] = L"pip";
-    for (int i = 1; i < argc; ++i) {
-        new_argv[i + 2] = argv[i];
+    int i = 1;
+    if (i < argc && wcscmp(argv[i], L"-u") == 0) {
+        i += 1;
+    }
+    if (i < argc && wcscmp(argv[i], L"-c") == 0) {
+        return false;
+    }
+    return true;
+}
+
+int wmain(int argc, wchar_t **argv)
+{
+    wchar_t argv0[MAX_PATH];
+    int new_argc;
+    wchar_t **new_argv;
+
+    if (!should_insert_pip(argc, argv)) {
+        new_argc = argc;
+        new_argv = argv;
+    } else {
+        new_argc = argc + 2;
+        new_argv = new wchar_t*[new_argc];
+        new_argv[0] = argv[0];
+        new_argv[1] = L"-m";
+        new_argv[2] = L"pip";
+        for (int i = 1; i < argc; ++i) {
+            new_argv[i + 2] = argv[i];
+        }
     }
 
     HMODULE python = NULL;
@@ -40,7 +63,7 @@ wmain(int argc, wchar_t **argv)
         (python = LoadLibraryW(L"python35"))) {
         Py_MainW pymain = (Py_MainW)GetProcAddress(python, "Py_Main");
         if (pymain) {
-            res = pymain(argc + 2, new_argv);
+            res = pymain(new_argc, new_argv);
         }
     } else if ((python = LoadLibraryW(L"python27"))) {
         Py_MainA pymain = (Py_MainA)GetProcAddress(python, "Py_Main");
@@ -57,9 +80,9 @@ wmain(int argc, wchar_t **argv)
                 }
             }
             if (pymain) {
-                res = pymain(argc + 2, new_argvA);
+                res = pymain(new_argc, new_argvA);
             }
-            free_argvA(argc + 2, new_argvA);
+            free_argvA(new_argc, new_argvA);
         }
     }
 
@@ -67,7 +90,9 @@ wmain(int argc, wchar_t **argv)
         FreeLibrary(python);
     }
 
-    delete[] new_argv;
+    if (new_argv != argv) {
+        delete[] new_argv;
+    }
 
     return res;
 }
